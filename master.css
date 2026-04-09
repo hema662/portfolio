@@ -28,7 +28,8 @@ html {
 @media (max-width: 767px) {
     .home-container,
     .about-container,
-    .skills-container {
+    .skills-container,
+    .projects-container {
         width: 100%;
         padding: 30px;
     }
@@ -36,7 +37,8 @@ html {
 @media (min-width: 768px) {
     .home-container,
     .about-container,
-    .skills-container {
+    .skills-container,
+    .projects-container {
         width: 100%;
         padding: 35px;
     }
@@ -44,7 +46,8 @@ html {
 @media (min-width: 992px) {
     .home-container,
     .about-container,
-    .skills-container {
+    .skills-container,
+    .projects-container {
         width: 100%;
         padding: 50px;
     }
@@ -52,7 +55,8 @@ html {
 @media (min-width: 1200px) {
     .home-container,
     .about-container,
-    .skills-container {
+    .skills-container,
+    .projects-container {
         width: 100%;
         padding-top: 50px;
         padding-left: 75px;
@@ -63,11 +67,12 @@ html {
 @media (min-width: 1400px) {
     .home-container,
     .about-container,
-    .skills-container {
+    .skills-container,
+    .projects-container {
         width: 100%;
         padding-top: 50px;
-        padding-left: 100px;
-        padding-right: 100px;
+        padding-left: 150px;
+        padding-right: 150px;
         padding-bottom: 50px;
     }
 }
@@ -558,5 +563,109 @@ header .navbar nav ul li:last-child a:hover {
     }
     .skills-container .skills-box .skills-side .box-skills-content .responsive-card::after {
         left: 70%;
+    }
+}
+
+/* projects-section */
+
+.projects {
+    background-color: var(--background-color);
+    color: var(--second-text-color);
+}
+.projects-container .projects-text {
+    text-align: center;
+    font-size: 28px;
+    opacity: 0.8;
+    padding-bottom: 75px;
+}
+.projects-container .projects-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+.projects-container .projects-box .project-card {
+    background-color: var(--card-color);
+    border: 1px black solid;
+    border-radius: 7px;
+    box-shadow: var(--second-box-shadow);
+    transition: var(--transition);
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+.projects-container .projects-box .project-card .top {
+    width: 100%;
+    height: 55%;
+}
+.projects-container .projects-box .project-card .top img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.projects-container .projects-box .project-card .bottom {
+    width: 100%;
+    height: 45%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.projects-container .projects-box .project-card .bottom p {
+    font-weight: bold;
+    opacity: 0.9;
+    padding: 10px 0px;
+    flex-grow: 2;
+}
+.projects-container .projects-box .project-card .bottom .button {
+    margin-bottom: 15px;
+    padding: 10px 0px;
+}
+.projects-container .projects-box .project-card .bottom a {
+    text-decoration: none;
+    color: var(--text-color);
+    background-color: var(--accent-color);
+    border: var(--accent-color) 1px solid;
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: var(--second-transition);
+}
+.projects-container .projects-box .project-card .bottom a:hover i {
+    animation: arrow-right 0.5s infinite alternate ;
+}
+.projects-container .projects-box .project-card:last-child .bottom a i,
+.projects-container .projects-box .project-card:last-child .bottom a {
+    animation: none;
+    pointer-events: none;
+}
+
+@keyframes arrow-right {
+    to {
+        transform: translateX(7px);
+    }
+}
+@media (max-width: 767px) {
+    .projects-container .projects-box {
+        grid-template-columns: 1fr;
+    }
+    .projects-container .projects-box .project-card {
+        margin-bottom: var(--cards-margin-bottom);
+    }
+}
+@media (min-width: 768px) {
+    .projects-container .projects-box {
+        grid-template-columns: 1fr 1fr;
+    }
+    .projects-container .projects-box .project-card {
+        margin-bottom: var(--cards-margin-bottom);
+    }
+}
+@media (min-width: 992px) {
+    .projects-container .projects-box {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .projects-container .projects-box .project-card {
+        margin-bottom: 0;
     }
 }
