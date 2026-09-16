@@ -4,24 +4,50 @@
     padding: 0px;
     scroll-behavior: smooth;
 }
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color); 
+}
 html {
     font-family: "Inter", "Roboto", sans-serif;
     background-color: var(--primary-color);
     color: var(--text-color);
     text-transform: capitalize;
 }
+/* root 1 light */
 :root {
     --primary-color: #E9D2A1;
     --background-color: #fff;
-    --text-color: #fff;
+    --text-color: black;
     --card-color: #fff;
-    --second-text-color: black;
+    --second-text-color: #fff;
     --accent-color: #1B263B;
     --transition: all ease 0.3s;
     --second-transition: all ease 0.5s;
     --box-shadow: rgb(170, 170, 170) 0px 0px 10px 0px;
     --second-box-shadow: rgb(220, 220, 220) 0px 0px 10px 0px;
     --cards-margin-bottom: 30px;
+}
+
+:root {
+   --primary-color: black;
+    --background-color: black;
+    --text-color: #fff;
+    --card-color: #ffffff0b;
+    --second-text-color: black;
+    --accent-color: rgb(25, 68, 137);
+    --transition: all ease 0.3s;
+    --second-transition: all ease 0.5s;
+    --box-shadow: rgb(25, 68, 137) 0px 0px 25px 0px;
+    --second-box-shadow: rgb(220, 220, 220) 0px 0px 10px 0px;
+    --cards-margin-bottom: 30px;
+    --text-shadow: var(--accent-color) 10px 0px 40px;
+    --border: var(--accent-color) 1px solid;
 }
 /* frash */
 
@@ -96,7 +122,6 @@ header {
     background-color: var(--background-color);
     position: relative;
     z-index: 999;
-    box-shadow: var(--box-shadow);
 }
 header .logo {
     margin-left: 50px;
@@ -127,7 +152,7 @@ header .navbar nav ul li:last-child a {
 header .navbar nav ul li a {
     text-transform: uppercase;
     text-decoration: none;
-    color: var(--accent-color);
+    color: var(--text-color);
     font-size: 17px;
     font-weight: 600;
     transition: var(--second-transition);
@@ -186,11 +211,13 @@ header .navbar nav ul li:last-child a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 30px;
 }
 .home-container .home-text h1 {
     font-size: 40px;
     padding-bottom: 15px;
     animation: text 1s; 
+    text-shadow: var(--text-shadow);
 }
 .home-container .home-text h1 span {
     color: var(--accent-color);
@@ -213,6 +240,7 @@ header .navbar nav ul li:last-child a:hover {
     padding: 10px 15px;
     border-radius: 20px;
     transition: var(--second-transition);
+    box-shadow: var(--box-shadow);
 }
 .home-container .home-text .button a:hover {
     background-color: var(--accent-color);
@@ -242,7 +270,8 @@ header .navbar nav ul li:last-child a:hover {
     .home-container .home-text p {
         width: 100%;
     }
-    .home-container .img img {
+    .home-container .img img,
+    .home-container .img {
         display: none;
     }
 }
@@ -280,7 +309,7 @@ header .navbar nav ul li:last-child a:hover {
 
 .about {
     background-color: var(--background-color);
-    color: var(--second-text-color);
+    color: var(--text-color);
 }
 .about-container .about-text {
     text-align: center;
@@ -295,29 +324,23 @@ header .navbar nav ul li:last-child a:hover {
     gap: 35px;
 }
 .about-container .about-box .about-why {
-    width: 60%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-}
-.about-container .about-box .about-why .card-why {
-    grid-column: 1 / 3;
-}
-.about-container .about-box .about-why .card-goal {
-    grid-column: 1 / 4;
+    width: 55%;
 }
 .about-container .about-box .about-why .card-why,
 .about-container .about-box .about-why .card-what,
 .about-container .about-box .about-why .card-goal {
     background-color: var(--card-color);
     padding: 20px;
-    border: 1px black solid;
+    border: var(--border);
     border-radius: 7px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    box-shadow: var(--second-box-shadow);
+    box-shadow: var(--box-shadow);
     transition: var(--transition);
+    backdrop-filter: blur(10px);
+    width: calc(100% / 1);
+    margin-bottom: var(--cards-margin-bottom);
 }
 .about-container .about-box .about-why .card-why:hover,
 .about-container .about-box .about-why .card-what:hover,
@@ -330,257 +353,137 @@ header .navbar nav ul li:last-child a:hover {
     width: 100%;
     padding-bottom: 10px;
 }
-.about-container .about-box .about-me {
-    width: 40%;
+.about-container .about-box .about-why .me {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    height: auto;
+}
+.about-container .about-box .about-why .me .card {
+    border: var(--accent-color) 1px solid;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 7px;
+    box-shadow: var(--box-shadow);
+    width: calc(95% / 2);
+    height: auto;
+    align-items: center;
+    transition: var(--transition);
+}
+.about-container .about-box .about-why .me .card:hover {
+    transform: scale(1.05);
+}
+.about-container .about-box .about-why .me .card i {
+    margin-bottom: 20px;
+}
+.about-container .about-box .dots {
+    width: 45%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1%;
 }
-.about-container .about-box .about-me .about-card {
-    width: calc(99% / 2);
-    border: 1px black solid;
-    text-align: center;
-    border-radius: 7px;
-    padding: 15px;
-    box-shadow: var(--second-box-shadow);
-    margin-bottom: 5px;
+.about-container .about-box .dots .box .line {
+    background-color: var(--text-color);
+    width: 5px;
+    height: 700px;
+    margin: 0px 0 100px 0;
 }
-.about-container .about-box .about-me .about-card i {
-    margin-bottom: 15px;
-    display: inline-block;
-    opacity: 0.8;
+.about-container .about-box .dots .box .line .circle {
+    background-color: var(--accent-color);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 135px -7px;
+    box-shadow: var(--box-shadow);
+    border: var(--border);
 }
-.about-container .about-box .about-me .about-card h3 {
-    padding-bottom: 10px;
-}
-.about-container .about-box .about-me .about-card p {
-    font-weight: bold;
-}
+
 @media (max-width: 767px) {
     .about-container .about-box {
-        flex-direction: column;
-    }
-    .about-container .about-box .about-why {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        gap: 0;
-    }
-    .about-container .about-box .about-why .card-why {
-        width: 100%;
-        margin-bottom: var(--cards-margin-bottom);
-    }
-    .about-container .about-box .about-why .card-what {
-        width: 100%;
-        margin-bottom: var(--cards-margin-bottom);
-    }
-    .about-container .about-box .about-why .card-goal {
-        width: 100%;
-        margin-bottom: var(--cards-margin-bottom);
-    }
-    .about-container .about-box .about-me {
-        width: 100%;
-        flex-direction: column;
-    }
-    .about-container .about-box .about-me .about-card {
-        width: 100%;
-        margin-bottom: var(--cards-margin-bottom);
-    }
-}
-@media (min-width: 768px) {
-    .about-container .about-box {
-        flex-direction: column;
-    }
-    .about-container .about-box .about-why {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        gap: 0;
-    }
-    .about-container .about-box .about-why .card-why {
-        width: 100%;
-        margin-bottom: var(--cards-margin-bottom);
-    }
-    .about-container .about-box .about-why .card-what {
-        width: 100%;
-        margin-bottom: var(--cards-margin-bottom);
-    }
-    .about-container .about-box .about-why .card-goal {
-        width: 100%;
-        margin-bottom: var(--cards-margin-bottom);
-    }
-    .about-container .about-box .about-me {
-        width: 100%;
-        flex-direction: column;
-    }
-    .about-container .about-box .about-me .about-card {
-        width: 100%;
-        margin-bottom: var(--cards-margin-bottom);
-    }
-}
-@media (min-width: 992px) {
-    .about-container .about-box .about-why {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 30px;
-    }
-    .about-container .about-box .about-why .card-why,
-    .about-container .about-box .about-why .card-what,
-    .about-container .about-box .about-why .card-goal {
-        margin-bottom: 0;
-    }
-    .about-container .about-box .about-me {
-        display: flex;
         justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        flex-direction: row;
-        gap: 1%;
-    }
-    .about-container .about-box .about-me .about-card {
-        width: calc(99% / 2);
-        margin-bottom: 0;
-    }
-}
-@media (min-width: 1200px) {
-    .about-container .about-box {
-        flex-direction: row;
+        width: 100%;
     }
     .about-container .about-box .about-why {
-        width: 60%;
+        width: 100%;
     }
-    .about-container .about-box .about-me {
-        width: 40%;
+    .about-container .about-box .dots {
+        display: none;
     }
-    .about-container .about-box .about-me .about-card {
-        margin-bottom: 5px;
+    .about-container .about-box .about-why .me {
+        flex-direction: column;
+        align-items: center;
+    }
+    .about-container .about-box .about-why .me .card {
+        width: 100%;
+        padding: 8%;
+        margin-bottom: 15px;
     }
 }
+@media (min-width: 768px) and (max-width: 991px) {
+    .about-container .about-box .about-why {
+        width: 70%;
+    }
+    .about-container .about-box .about-why .me .card {
+        width: 100%;
+        padding: 8%;
+    }
+    .about-container .about-box .dots {
+        display: none;
+    }
+}
+@media (min-width: 1400px) {
+    .about-container .about-box .dots .box .line {
+        height: 750px;
+    } 
+}
+
 
 /* skills-section */
 
-.skills-container .skills-box {
+.skills {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: var(--text-color);
 }
 .skills-container .skills-text {
     text-align: center;
-    font-size: 28px;
-    opacity: 0.8;
-    padding-bottom: 75px;
+    margin-bottom: 75px;
 }
-.skills-container .skills-box .skills-side {
-    width: 50%;
-    height: 100%;
-    background-color: var(--card-color);
-    border-radius: 7px;
-    padding: 20px;
-    width: 800px;
-}
-.skills-container .skills-box .skills-side .box-skills-content {
-    border-radius: 7px;
+.skills-container .skills-box {
+    display: flex;
+    flex-wrap: wrap;
     padding: 15px;
+    justify-content: center;
+    gap: 20px;
 }
-.skills-container .skills-box .skills-side .box-skills-content .html-card,
-.skills-container .skills-box .skills-side .box-skills-content .css-card,
-.skills-container .skills-box .skills-side .box-skills-content .responsive-card {
-    border: 1px black solid;
-    border-radius: 20px;
-    padding: 5px 10px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    position: relative;
-    z-index: 3;
+.skills-container .skills-box img {
+    width: 50px;
+    height: 60px;
 }
-.skills-container .skills-box .skills-side .box-skills-content .html-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: #1B263B;
-    border-radius: 20px;
-    width: 85%;
-    z-index: -1;
+.skills-container .skills-box .card {
+    border: var(--border);
+    border-radius: 7px;
+    box-shadow: var(--box-shadow);
+    width: 150px;
+    padding: 10px;
 }
-.skills-container .skills-box .skills-side .box-skills-content .css-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: #1B263B;
-    border-radius: 20px;
-    width: 70%;
-    z-index: -1;
+.skills-container .skills-box .card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
 }
-.skills-container .skills-box .skills-side .box-skills-content .responsive-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: #1B263B;
-    border-radius: 20px;
-    width: 90%;
-    z-index: -1;
-}
-.skills-container .skills-box .skills-side .box-skills-content .html-card::after {
-    content: "85%";
-    position: absolute;
-    top: 50%;
-    left: 75%;
-    transform: translate(0%, -50%);
-    color: var(--text-color);
-    font-weight: bold;
-}
-.skills-container .skills-box .skills-side .box-skills-content .css-card::after {
-    content: "70%";
-    position: absolute;
-    top: 50%;
-    left: 60%;
-    transform: translate(0%, -50%);
-    color: var(--text-color);
-    font-weight: bold;
-}
-.skills-container .skills-box .skills-side .box-skills-content .responsive-card::after {
-    content: "90%";
-    position: absolute;
-    top: 50%;
-    left: 80%;
-    transform: translate(0%, -50%);
-    color: var(--text-color);
-    font-weight: bold;
-}
-.skills-container .skills-box .skills-side .box-skills-content .html-card h3,
-.skills-container .skills-box .skills-side .box-skills-content .css-card h3,
-.skills-container .skills-box .skills-side .box-skills-content .responsive-card h3 {
-    transform: translateY(-35px);
-    color: var(--second-text-color);
-}
-@media (max-width: 767px) {
-    .skills-container .skills-box .skills-side .box-skills-content .html-card::after {
-        left: 60%;
-    }
-    .skills-container .skills-box .skills-side .box-skills-content .css-card::after {
-        left: 50%;
-    }
-    .skills-container .skills-box .skills-side .box-skills-content .responsive-card::after {
-        left: 70%;
-    }
+.skills-container .skills-box .card:hover {
+    transform: scale(1.1);
 }
 
 /* projects-section */
 
 .projects {
     background-color: var(--background-color);
-    color: var(--second-text-color);
+    color: var(text-color);
 }
 .projects-container .projects-text {
     text-align: center;
@@ -593,30 +496,49 @@ header .navbar nav ul li:last-child a:hover {
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
     align-items: center;
-    gap: 25px;
+    gap: 30px;
 }
 .projects-container .projects-box .project-card {
     background-color: var(--card-color);
-    border: 1px black solid;
+    border: var(--border);
     border-radius: 7px;
-    box-shadow: var(--second-box-shadow);
+    box-shadow: var(--box-shadow);
     transition: var(--transition);
     height: 400px;
     display: flex;
     flex-wrap: wrap;
     overflow: hidden;
+    position: relative;
 }
 .projects-container .projects-box .project-card:hover {
     transform: scale(1.04);
 }
 .projects-container .projects-box .project-card .top {
     width: 100%;
-    height: 55%;
+    height: 100%;
 }
 .projects-container .projects-box .project-card .top img {
-    width: 100%;
     height: 100%;
     object-fit: cover;
+    z-index: 1;
+    position: absolute;
+    filter: brightness(40%);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.projects-container .projects-box .project-card:last-of-type .top {
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.projects-container .projects-box .project-card:last-of-type .top span {
+    font-weight: bold;
+    color: rgb(181, 37, 37);
+    display: inline-block;
+    font-size: 30px;
 }
 .projects-container .projects-box .project-card .bottom {
     width: 100%;
@@ -624,6 +546,9 @@ header .navbar nav ul li:last-child a:hover {
     padding: 15px;
     display: flex;
     flex-direction: column;
+    z-index: 6;
+    position: absolute;
+    bottom: 10px;
 }
 .projects-container .projects-box .project-card .bottom p {
     font-weight: bold;
@@ -663,7 +588,15 @@ header .navbar nav ul li:last-child a:hover {
         grid-template-columns: 1fr;
     }
     .projects-container .projects-box .project-card {
-        margin-bottom: var(--cards-margin-bottom);
+        margin: 10px 30px;
+    }
+    .projects-container .projects-box .project-card img {
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        width: 100%;
     }
 }
 @media (min-width: 768px) {
@@ -688,25 +621,13 @@ header .navbar nav ul li:last-child a:hover {
 .tip {
     height: 50vh;
     position: relative;
-    color: var(--second-text-color);
+    color: var(--text-color);
     z-index: 5;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.tip::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 50vh;
-    width: 100%;
-    background: url(images/tip-background.jpg) no-repeat;
-    object-fit: cover;
-    filter: brightness(100%);
-    z-index: -1;
-}
+
 .tip-container .tip-text {
     text-align: center;
 }
@@ -724,6 +645,7 @@ header .navbar nav ul li:last-child a:hover {
 
 .contact {
     background-color: #000000;
+    border-top: white 1px solid;
 }
 .contact-container .contact-text {
     text-align: center;
