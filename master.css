@@ -11,7 +11,7 @@
   background: #f1f1f1; 
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-color); 
+  background: var(--accent-color);
 }
 html {
     font-family: "Inter", "Roboto", sans-serif;
@@ -20,7 +20,7 @@ html {
     text-transform: capitalize;
 }
 /* root 1 light */
-:root {
+/* :root {
     --primary-color: #E9D2A1;
     --background-color: #fff;
     --text-color: black;
@@ -32,7 +32,7 @@ html {
     --box-shadow: rgb(170, 170, 170) 0px 0px 10px 0px;
     --second-box-shadow: rgb(220, 220, 220) 0px 0px 10px 0px;
     --cards-margin-bottom: 30px;
-}
+} */
 
 :root {
    --primary-color: black;
@@ -223,7 +223,7 @@ header .navbar nav ul li:last-child a:hover {
     color: var(--accent-color);
 }
 .home-container .home-text p {
-    font-size: 18px;
+    font-size: 16px;
     width: 600px;
     padding-bottom: 15px;
     animation: text 1.5s;
@@ -302,6 +302,12 @@ header .navbar nav ul li:last-child a:hover {
 @media (min-width: 1200px) {
     .home-container .home-text p {
         width: auto;
+    }
+}
+@media (min-width: 1400px) {
+    .home-container {
+        gap: 40px;
+        justify-content: center;
     }
 }
 
@@ -615,6 +621,9 @@ header .navbar nav ul li:last-child a:hover {
         margin-bottom: 0;
     }
 }
+@media (min-width: 1400px) {
+
+}
 
 /* tip-section */
 
@@ -656,9 +665,9 @@ header .navbar nav ul li:last-child a:hover {
 }
 .contact-container .contact-box {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: flex-start;
-    gap: 20px;
+    gap: 100px;
 }
 .contact-container .contact-box nav ul li {
     list-style: none;
@@ -670,7 +679,6 @@ header .navbar nav ul li:last-child a:hover {
     width: 100%;
     padding-bottom: 15px;
 }
-
 .contact-container .contact-box .links nav ul {
     display: flex;
     flex-wrap: wrap;
@@ -678,6 +686,21 @@ header .navbar nav ul li:last-child a:hover {
 }
 .contact-container .contact-box .links nav img {
     width: 30px;
+}
+.contact-container .contact-box nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+@media (max-width: 767px) {
+    .contact-container .contact-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .contact-container .contact-box nav ul {
+        justify-content: center;
+    }
 }
 
 /* footer */
