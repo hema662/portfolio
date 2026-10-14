@@ -8,10 +8,11 @@
   width: 12px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #ccc;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--accent-color);
+  border-radius: 5px;
 }
 html {
     font-family: "Inter", "Roboto", sans-serif;
@@ -40,7 +41,7 @@ html {
     --text-color: #fff;
     --card-color: #ffffff0b;
     --second-text-color: black;
-    --accent-color: rgb(25, 68, 137);
+    --accent-color: rgb(26, 77, 159);
     --transition: all ease 0.3s;
     --second-transition: all ease 0.5s;
     --box-shadow: rgb(25, 68, 137) 0px 0px 25px 0px;
@@ -119,9 +120,11 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 75px;
-    background-color: var(--background-color);
-    position: relative;
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
     z-index: 999;
+    border-bottom: #ccc 1px solid;
 }
 header .logo {
     margin-left: 50px;
@@ -147,7 +150,7 @@ header .navbar nav ul li {
 header .navbar nav ul li:last-child a {
     background-color: var(--accent-color);
     color: var(--text-color);
-    border-radius: 20px;
+    border-radius: 10px;
 }
 header .navbar nav ul li a {
     text-transform: uppercase;
@@ -203,15 +206,28 @@ header .navbar nav ul li:last-child a:hover {
 /* home-section */
 
 .home {
-    height: 90vh;
+    height: 100vh;
     display: flex;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+.home .video-back video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+    filter: brightness(12%);
 }
 .home-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 30px;
+    margin-top: 7%;
 }
 .home-container .home-text h1 {
     font-size: 40px;
@@ -231,16 +247,21 @@ header .navbar nav ul li:last-child a:hover {
 .home-container .home-text .button {
     padding-top: 15px;
     animation: text 2s;
+    display: flex;
+    gap: 20px;
 }
 .home-container .home-text .button a {
     text-decoration: none;
     color: var(--text-color);
-    background-color: transparent;
+    background-color: var(--accent-color);
     border: var(--accent-color) 1px solid;
     padding: 10px 15px;
-    border-radius: 20px;
+    border-radius: 10px;
     transition: var(--second-transition);
     box-shadow: var(--box-shadow);
+}
+.home-container .home-text .button .project {
+    background-color: transparent;
 }
 .home-container .home-text .button a:hover {
     background-color: var(--accent-color);
@@ -489,7 +510,7 @@ header .navbar nav ul li:last-child a:hover {
 
 .projects {
     background-color: var(--background-color);
-    color: var(text-color);
+    color: var(--text-color);
 }
 .projects-container .projects-text {
     text-align: center;
@@ -498,11 +519,10 @@ header .navbar nav ul li:last-child a:hover {
     padding-bottom: 75px;
 }
 .projects-container .projects-box {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 3%;
 }
 .projects-container .projects-box .project-card {
     background-color: var(--card-color);
@@ -510,6 +530,7 @@ header .navbar nav ul li:last-child a:hover {
     border-radius: 7px;
     box-shadow: var(--box-shadow);
     transition: var(--transition);
+    width: calc(97% / 2);
     height: 400px;
     display: flex;
     flex-wrap: wrap;
@@ -591,10 +612,11 @@ header .navbar nav ul li:last-child a:hover {
 }
 @media (max-width: 767px) {
     .projects-container .projects-box {
-        grid-template-columns: 1fr;
+        display: flex;
     }
     .projects-container .projects-box .project-card {
         margin: 10px 30px;
+        width: 100%;
     }
     .projects-container .projects-box .project-card img {
         right: 0;
@@ -606,19 +628,13 @@ header .navbar nav ul li:last-child a:hover {
     }
 }
 @media (min-width: 768px) {
-    .projects-container .projects-box {
-        grid-template-columns: 1fr 1fr;
-    }
     .projects-container .projects-box .project-card {
         margin-bottom: var(--cards-margin-bottom);
     }
 }
 @media (min-width: 992px) {
-    .projects-container .projects-box {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
     .projects-container .projects-box .project-card {
-        margin-bottom: 0;
+        margin-bottom: 50px;
     }
 }
 @media (min-width: 1400px) {
